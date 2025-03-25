@@ -4,7 +4,7 @@ import Image from "next/image"
 import { Montserrat } from "next/font/google";
 
 import { cn } from "@/lib/utils"
-import { LayoutDashboard, MessageSquare, Settings } from "lucide-react";
+import { LayoutDashboard, MessageSquare, Settings, SquareLibrary } from "lucide-react";
 import { usePathname } from "next/navigation";
 
 
@@ -25,6 +25,12 @@ const routes = [
         icon: MessageSquare,
         href: "/conversation",
         color: "text-violet-500"
+    },
+    {
+        label: "Knowledge-Repo",
+        icon: SquareLibrary,
+        href: "/knowledge-repository",
+        color: "text-lime-500"
     },
     {
         label: "Settings",
