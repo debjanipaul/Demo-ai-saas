@@ -15,11 +15,6 @@ interface DocumentFile {
     content?: string; // Add content to store extracted text
 }
 
-// interface UploadedFile {
-//     fileName: string;
-//     mimeType: string;
-// }
-
 interface Citation {
     startIndex?: number;
     endIndex?: number;
@@ -39,8 +34,6 @@ interface CitationMetadata {
 
 // Environment variables
 const GOOGLE_API_KEY = process.env.GOOGLE_API_KEY!;
-// const BASE_URL = process.env.BASE_URL || "http://localhost:3000";
-
 if (!GOOGLE_API_KEY) {
     throw new Error("GOOGLE_API_KEY environment variable is not set.");
 }
@@ -168,7 +161,9 @@ export async function POST(req: Request) {
             ];
         } else {
             // Use LLM fallback when no relevant documents are found
-            contentParts = [{ text: `Please answer the following question based on your knowledge:\n\n${userQuery}` }];
+            contentParts = [
+                { text: `No relevant documents were found in the knowledge repository. Please answer this question based on your general knowledge:\n\nQuestion: ${userQuery}` },
+            ];
         }
 
         // Initialize Google Generative AI client

@@ -3,7 +3,7 @@
 import axios from "axios";
 import * as z from "zod";
 import { Heading } from "@/components/heading";
-import { MessageSquare } from "lucide-react";
+import { MessageSquare, ArrowRight } from "lucide-react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { formSchema } from "./constants";
@@ -69,13 +69,15 @@ const ConversationPage = () => {
 
     return (
         <div>
-            <Heading
-                title="Conversation"
-                description="Most Advanced Conversation Model"
-                icon={MessageSquare}
-                iconColor="text-violet-500"
-                bgColor="bg-violet-500/10"
-            />
+            <div className="flex items-center justify-center h-full text-center mt-[5rem] !text-[2.25rem]">
+                <Heading
+                    title="How can I help you?"
+                    description=""
+                    icon={MessageSquare}
+                    iconColor="text-violet-400"
+                    bgColor="bg-violet-400/10"
+                />
+            </div>
             <div className="px-4 lg:px-8">
                 <div>
                     <Form {...form}>
@@ -91,7 +93,7 @@ const ConversationPage = () => {
                                             <Input
                                                 className="border-0 outline-none focus-visible:ring-0 focus-visible:ring-transparent"
                                                 disabled={isLoading}
-                                                placeholder="What is Generative AI"
+                                                placeholder="Ask Anything...."
                                                 {...field}
                                             />
                                         </FormControl>
@@ -99,7 +101,7 @@ const ConversationPage = () => {
                                 )}
                             />
                             <Button className="col-span-12 lg:col-span-2 w-full" disabled={isLoading}>
-                                Generate
+                                <ArrowRight />
                             </Button>
                         </form>
                     </Form>
